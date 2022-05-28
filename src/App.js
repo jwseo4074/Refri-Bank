@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+
 import signup from './page/register';
 import mainpage from './page/mainpage';
 import Rfgpage from './page/rfgpage';
@@ -26,21 +27,22 @@ const App = () => {
   return (
     <div className="main-form">
       <Router>
-        <Route
-          render={({ location, history }) => (
-            <React.Fragment>
-              <Header
-                information={information}
-                location={location}
-                page={page}
-                setpage={setpage}
-                information={information}
-                setinformation={setinformation}
-                this_header_set_inputs={this_header_set_inputs}
-                setthis_header_set_inputs={setthis_header_set_inputs}
-                history={history}
-              />
-
+        <Header>
+          information={information}
+          location={location}
+          page={page}
+          setpage={setpage}
+          setinformation={setinformation}
+          this_header_set_inputs={this_header_set_inputs}
+          setthis_header_set_inputs={setthis_header_set_inputs}
+          history={history}
+        </Header>
+        {/* <Routes */}
+        {/* <> */}
+          {/* render={({ location, history }) => ( */}
+            {/* // <React.Fragment> */}
+              
+            <Routes>
               <Route exact path="/" this_header_set_inputs={this_header_set_inputs} setthis_header_set_inputs={setthis_header_set_inputs} component={mainpage} />
 
               <Route exact path="/rfgpage" component={Rfgpage}>
@@ -62,16 +64,18 @@ const App = () => {
               <Route exact path="/my_igd" component={Myigd}>
                 <Myigd history={history} information={information} />
               </Route>
-              <Route restricted exact path="/like" exact component={Likeit}>
+              <Route restricted exact path="/like" component={Likeit}>
                 <Likeit history={history} information={information} />
               </Route>
-              <Route exact path="/my_write" exact component={Mywrite}>
+              <Route exact path="/my_write" component={Mywrite}>
                 <Mywrite history={history} information={information} />
               </Route>
               <Route exact path="/errorpage" component={Error} />
-            </React.Fragment>
-          )}
-        />
+            </Routes> 
+            {/* // // </React.Fragment> */}
+          {/* )}  */}
+        {/* /> */}
+        {/* </> */}
       </Router>
     </div>
   );

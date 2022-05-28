@@ -28,3 +28,6 @@
 # package.json
 # prettierrc
 
+node_modules
+dist/*
+*.log
